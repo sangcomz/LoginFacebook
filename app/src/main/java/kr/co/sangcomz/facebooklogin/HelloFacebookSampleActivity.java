@@ -42,6 +42,7 @@ import com.facebook.*;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
 import com.facebook.share.ShareApi;
 import com.facebook.share.Sharer;
@@ -51,6 +52,7 @@ import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
@@ -58,11 +60,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class HelloFacebookSampleActivity extends FragmentActivity {
 
     private ProfilePictureView profilePictureView;
     private TextView greeting;
+    private TextView email;
+    private TextView gender;
+    private TextView birthday;
     private CallbackManager callbackManager;
     private ProfileTracker profileTracker;
     private ShareDialog shareDialog;
@@ -122,14 +128,6 @@ public class HelloFacebookSampleActivity extends FragmentActivity {
                     public void onError(FacebookException exception) {
                         updateUI();
                     }
-
-                    private void showAlert() {
-                        new AlertDialog.Builder(HelloFacebookSampleActivity.this)
-                                .setTitle(R.string.cancelled)
-                                .setMessage(R.string.permission_not_granted)
-                                .setPositiveButton(R.string.ok, null)
-                                .show();
-                    }
                 });
 
         shareDialog = new ShareDialog(this);
@@ -151,6 +149,14 @@ public class HelloFacebookSampleActivity extends FragmentActivity {
 
         profilePictureView = (ProfilePictureView) findViewById(R.id.profilePicture);
         greeting = (TextView) findViewById(R.id.greeting);
+        email = (TextView) findViewById(R.id.email);
+        gender = (TextView) findViewById(R.id.gender);
+        birthday = (TextView) findViewById(R.id.birthday);
+
+        List<String> PERMISSIONS= Arrays.asList("email", "user_birthday", "user_status");
+        LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+        loginButton.setReadPermissions(PERMISSIONS);//추가 PERMISSIONS 주기
+        loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);//아이콘 없애기
     }
 
     @Override
@@ -190,13 +196,43 @@ public class HelloFacebookSampleActivity extends FragmentActivity {
     private void updateUI() {
         boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
 
-        Profile profile = Profile.getCurrentProfile();
+        final Profile profile = Profile.getCurrentProfile();
         if (enableButtons && profile != null) {
             profilePictureView.setProfileId(profile.getId());
             greeting.setText(getString(R.string.hello_user, profile.getFirstName()));
+            final AccessToken accessToken = AccessToken.getCurrentAccessToken();
+            GraphRequest request = GraphRequest.newMeRequest(
+                    AccessToken.getCurrentAccessToken(),
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(
+                                JSONObject object,
+                                GraphResponse response) {
+                            System.out.println("유효기간 :::: " + accessToken.getExpires().toString());
+                            System.out.println(profile.getProfilePictureUri(30, 30).toString());
+                            try {
+                                System.out.println(object.getString("id"));
+                                System.out.println(object.getString("email"));
+                                System.out.println(object.getString("birthday"));
+                                System.out.println(object.getString("name"));
+                                System.out.println(object.getString("gender").toUpperCase());
+
+                                email.setText(object.getString("email"));
+                                gender.setText(object.getString("gender").toUpperCase());
+                                birthday.setText(object.getString("birthday"));
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            request.executeAsync();
         } else {
             profilePictureView.setProfileId(null);
             greeting.setText(null);
+            email.setText(null);
+            gender.setText(null);
+            birthday.setText(null);
         }
     }
 
