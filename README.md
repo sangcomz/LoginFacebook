@@ -11,5 +11,5 @@ Facebook sdk 4.0 version
 두 개를 value/string에 추가합니다.
 
 # remove icon
-        loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);//아이콘 없애기
+    loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);//아이콘 없애기
 앞에 있는 페이스북 아이콘이 사라집니다.
