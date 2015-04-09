@@ -37,4 +37,8 @@
     <string name="pick_seattle_place">Pick a Seattle Place</string>
     <string name="app_id">786986278045559</string>
     <string name="exception">Exception: %1$s</string>
+
+    <string name="com_facebook_loginview_log_in_button_long">페이스북으로 로그인</string>
+    <string name="com_facebook_loginview_log_out_button">로그아웃</string>
+
 </resources>
