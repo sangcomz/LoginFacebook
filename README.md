@@ -3,9 +3,11 @@ Facebook sdk 4.0 version
 
 # App ID등록
 string.xml
+
     <string name="app_id">YOUR APP ID</string>
 
 AndroidManifest.xml
+
     <meta-data
         android:name="com.facebook.sdk.ApplicationId"
         android:value="@string/app_id" />
