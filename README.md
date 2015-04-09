@@ -1,6 +1,7 @@
 # LoginFacebook
 Facebook sdk 4.0.1 version
 
++ App ID등록 -> <li>App ID등록</li>
 
 
 # App ID등록
@@ -38,7 +39,6 @@ AndroidManifest.xml
     }
     
 hash key를 facebook developer에 등록
->>aa
     
 # Change the LoginButton Text
     <string name="com_facebook_loginview_log_in_button_long">페이스북으로 로그인</string>
