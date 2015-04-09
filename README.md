@@ -2,8 +2,21 @@
 Facebook sdk 4.0 version
 
 # App ID등록
+string.xml
     <string name="app_id">YOUR APP ID</string>
-    
+
+AndroidManifest.xml
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/app_id" />
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationName"
+            android:value="@string/facebook_app_name" />
+    <provider
+        android:name="com.facebook.FacebookContentProvider"
+        android:authorities="com.facebook.app.FacebookContentProviderYOUR_APP_ID"
+        android:exported="true" />
+
 
 # Change the LoginButton Text
     <string name="com_facebook_loginview_log_in_button_long">페이스북으로 로그인</string>
