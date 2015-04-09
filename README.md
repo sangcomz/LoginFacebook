@@ -1,7 +1,7 @@
 # LoginFacebook
 Facebook sdk 4.0.1 version
 
-<li>App ID등록</li>
+##<li>App ID등록</li>
 
 
 # App ID등록
