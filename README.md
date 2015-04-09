@@ -19,7 +19,24 @@ AndroidManifest.xml
         android:authorities="com.facebook.app.FacebookContentProviderYOUR_APP_ID"
         android:exported="true" />
 
+# Show Hash Key
 
+    public static void showHashKey(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    "your package name", PackageManager.GET_SIGNATURES); //Your            package name here
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+        } catch (NoSuchAlgorithmException e) {
+        }
+    }
+    
+    hash key를 facebook developer에 등록
+    
 # Change the LoginButton Text
     <string name="com_facebook_loginview_log_in_button_long">페이스북으로 로그인</string>
     <string name="com_facebook_loginview_log_out_button">로그아웃</string>
