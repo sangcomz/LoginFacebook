@@ -28,3 +28,8 @@ AndroidManifest.xml
 # remove icon
     loginButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);//아이콘 없애기
 앞에 있는 페이스북 아이콘이 사라집니다.
+
+# Add PERMISIONS
+    List<String> PERMISSIONS= Arrays.asList("email", "user_birthday", "user_status");
+    LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+    loginButton.setReadPermissions(PERMISSIONS);//추가 PERMISSIONS 주기
