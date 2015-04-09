@@ -37,9 +37,7 @@ AndroidManifest.xml
         }
     }
     
-    hash key를 facebook developer에 등록
-    
-    >
+hash key를 facebook developer에 등록
     
 # Change the LoginButton Text
     <string name="com_facebook_loginview_log_in_button_long">페이스북으로 로그인</string>
