@@ -2,6 +2,9 @@
 Facebook sdk 4.0.1 version
 
 # App ID등록
+
+[How to get App Id?](http://blog.naver.com/sangcomz/220325591100)
+
 string.xml
 
     <string name="app_id">YOUR APP ID</string>
@@ -50,3 +53,13 @@ hash key를 facebook developer에 등록
     List<String> PERMISSIONS= Arrays.asList("email", "user_birthday", "user_status");
     LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
     loginButton.setReadPermissions(PERMISSIONS);//추가 PERMISSIONS 주기
+    
+# Result Screen
+![ScreenShot](http://sangcomz.cafe24.com/eximg/face1.png)
+![ScreenShot](http://sangcomz.cafe24.com/eximg/face2.png)
+
+# Contact Me
+
+[Contact Me](http://sangcomz.cafe24.com/contact.php)
+
+
