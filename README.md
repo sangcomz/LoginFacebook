@@ -53,13 +53,3 @@ hash key를 facebook developer에 등록
     List<String> PERMISSIONS= Arrays.asList("email", "user_birthday", "user_status");
     LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
     loginButton.setReadPermissions(PERMISSIONS);//추가 PERMISSIONS 주기
-    
-# Result Screen
-![ScreenShot](http://sangcomz.cafe24.com/eximg/face1.png)
-![ScreenShot](http://sangcomz.cafe24.com/eximg/face2.png)
-
-# Contact Me
-
-[Contact Me](http://sangcomz.cafe24.com/contact.php)
-
-
