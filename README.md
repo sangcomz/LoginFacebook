@@ -1,5 +1,5 @@
 # LoginFacebook
-Facebook sdk 4.0.1 version
+Facebook sdk 4.10.0 version
 
 # App ID등록
 
