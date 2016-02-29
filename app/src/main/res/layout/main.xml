@@ -54,8 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:gravity="center_horizontal"
-                facebook:preset_size="normal" />
+                android:gravity="center_horizontal" />
         </LinearLayout>
 
         <com.facebook.login.widget.LoginButton
@@ -64,8 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            facebook:confirm_logout="false" />
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/email"
